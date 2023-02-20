@@ -12,12 +12,40 @@
 .side_bar_header{
   height: 100px;
   padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.side_bar_username a{
+  color: #FAFAFA;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.side_bar_chat_create a{
+  color: deepskyblue;
+  font-size: 10px;
+  text-decoration: none;
+  padding: 14px;
+  border: lightblue solid 1px
+}
+
 
 .side_bar_main{
   background-color: #2f3e51;
   height: calc(100vh - 100px);
   padding: 0 20px;
+  overflow: scroll;
+}
+
+.side_bar_main_room{
+  padding: 20px 0 40px;
+}
+
+.side_bar_main_room_name a{
+  color: white;
+  text-decoration: none;
 }
 
 /*** チャット欄 ***/
