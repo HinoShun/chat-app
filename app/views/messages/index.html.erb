@@ -10,21 +10,19 @@
       </div>
      <!-- サイドバー・チャット作成 -->
       <div class="side_bar_chat_create">
-        <a href="#">チャットを作成する</a>
+        <%= link_to "チャットを作成する", new_room_path %>
+        <!-- <a href="#">チャットを作成する</a>  -->
       </div>
     </div>
   
     <div class="side_bar_main">
-      <div class="side_bar_main_room">
-        <div class="side_bar_main_room_name">
-          <a href="#">techroom1</a>
+      <% current_user.rooms.each do |room| %>
+        <div class="side_bar_main_room">
+          <div class="side_bar_main_room_name">
+            <a href="#"><%= room.name %></a>
+          </div>
         </div>
-      </div>
-      <div class="side_bar_main_room">
-        <div class="side_bar_main_room_name">
-          <a href="#">techroom2</a>
-        </div>
-      </div>
+      <% end %>
     </div>
   
   </div>
