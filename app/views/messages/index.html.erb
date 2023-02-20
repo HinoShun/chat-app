@@ -5,7 +5,8 @@
     <div class="side_bar_header">
       <!-- サイドバー・ユーザー名 -->
       <div class="side_bar_username">
-        <a href="#">HINO</a>
+        <%= link_to current_user.name, edit_user_path(current_user) %>
+        <!-- これでもいい？→<%= link_to "#{current_user.name}", "/users/#{current_user.id}/edit" %> -->
       </div>
      <!-- サイドバー・チャット作成 -->
       <div class="side_bar_chat_create">
