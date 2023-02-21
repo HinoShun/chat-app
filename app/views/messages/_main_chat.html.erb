@@ -12,58 +12,19 @@
 </div>
 
 <div class="chat_main_main">
-  <div class="chat_main_box">
-    <div class="chat_main_up">
-      <div class="chat_main_username">
-        HINO
-      </div>
-      <div class="chat_main_date">
-        2023/2/20 18:00
-      </div>
-    </div>
-    <div class="chat_main_bottom">
-      <div class="chat_main_message">
-        疲れました。
-      </div>
-    </div>
-  </div>
-    
-  <div class="chat_main_box">
-    <div class="chat_main_up">
-      <div class="chat_main_username">
-        HINO
-      </div>
-      <div class="chat_main_date">
-        2023/2/20 18:00
-      </div>
-    </div>
-    <div class="chat_main_bottom">
-      <div class="chat_main_message">
-        疲れました。
-      </div>
-    </div>
-  </div>
-
+  <%= render partial: 'message', collection: @messages %>
 </div>
   
-<div class="chat_main_footer">
-  <div class="chat_main_form">
-  <input class="chat_main_form_message" placeholder= "type a message">
-    <label class="form-image">
-      <span class="image-file">画像</span>
-    <input type="file" class="hidden">
-    </label>
-  </div>
-  <input class="chat_main_form_btn" type="submit" value="送信">
-</div>
-
-<%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
-  <div class="form-input">
-    <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
-    <label class="form-image">
-      <span class="image-file">画像</span>
-      <%= f.file_field :image, class: 'hidden' %>
-    </label>
-  </div>
-  <%= f.submit '送信', class: 'form-submit' %>
-<% end %>
+  <%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
+    <div class="chat_main_footer">
+    <div class="chat_main_form">
+      <%= f.text_field :content, class: 'chat_main_form_message', placeholder: 'type a message' %>
+      <label class="form-image">
+        <span class="image-file">画像</span>
+        <%= f.file_field :image, class: 'hidden' %>
+      </label>
+    </div>
+    
+    <%= f.submit 'send', class: 'chat_main_form_btn' %>
+    </div>
+    <% end %>
