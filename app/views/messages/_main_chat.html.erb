@@ -1,57 +1,30 @@
 <div class="chat_main_header">
-      <div class="chat_main_header_left">
-        <div class="chat_main_header_roomname">
-          techroom1
-        </div>
-      </div>
-      <div class="chat_main_header_right">
-        <div class="chat_main_header_destroy">
-          <a href="#">チャットルームを終了する</a>
-        </div>
-      </div>
+  <div class="chat_main_header_left">
+    <div class="chat_main_header_roomname">
+      <%= @room.name %>
     </div>
-
-    <div class="chat_main_main">
-      <div class="chat_main_box">
-        <div class="chat_main_up">
-          <div class="chat_main_username">
-            HINO
-          </div>
-          <div class="chat_main_date">
-            2023/2/20 18:00
-          </div>
-        </div>
-        <div class="chat_main_bottom">
-          <div class="chat_main_message">
-            疲れました。
-          </div>
-        </div>
-      </div>
-      <div class="chat_main_box">
-        <div class="chat_main_up">
-          <div class="chat_main_username">
-            HINO
-          </div>
-          <div class="chat_main_date">
-            2023/2/20 18:00
-          </div>
-        </div>
-        <div class="chat_main_bottom">
-          <div class="chat_main_message">
-            疲れました。
-          </div>
-        </div>
-      </div>
-
+  </div>
+  <div class="chat_main_header_right">
+    <div class="chat_main_header_destroy">
+       <%= link_to "チャットを終了する", room_path(@room), method: :delete %>
     </div>
+  </div>
+</div>
+
+<div class="chat_main_main">
+  <%= render partial: 'message', collection: @messages %>
+</div>
   
+  <%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
     <div class="chat_main_footer">
-      <div class="chat_main_form">
-        <input class="chat_main_form_message" placeholder= "type a message">
-        <label class="form-image">
-          <span class="image-file">画像</span>
-          <input type="file" class="hidden">
+    <div class="chat_main_form">
+      <%= f.text_field :content, class: 'chat_main_form_message', placeholder: 'type a message' %>
+      <label class="form-image">
+        <span class="image-file">画像</span>
+        <%= f.file_field :image, class: 'hidden' %>
       </label>
-      </div>
-      <input class="chat_main_form_btn" type="submit" value="送信">
     </div>
+    
+    <%= f.submit 'send', class: 'chat_main_form_btn' %>
+    </div>
+    <% end %>
